@@ -1,4 +1,6 @@
 import classes from "./AvilableMeals.module.css";
+import Card from "../UI/Card";
+import MealItem from "./MealItems/MealItems";
 const DUMMY_MEALS = [
   {
     id: "m1",
@@ -26,10 +28,19 @@ const DUMMY_MEALS = [
   },
 ];
 const AvilableMeal = () => {
-  const mealList = DUMMY_MEALS.map((meals) => <li>{meals.name}</li>);
+  const mealList = DUMMY_MEALS.map((meals) => (
+    <MealItem
+      key={meals.id}
+      name={meals.name}
+      description={meals.description}
+      price={meals.price}
+    />
+  ));
   return (
     <section className={classes.meals}>
-      <ul>{mealList}</ul>
+      <Card>
+        <ul>{mealList}</ul>
+      </Card>
     </section>
   );
 };
