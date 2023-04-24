@@ -9,13 +9,13 @@ const ModalOverLay = (props) => {
   );
 };
 const Backdrop = (props) => {
-  return <div className={classes.Backdrop}></div>;
+  return <div className={classes.Backdrop} onClick={props.onClose}></div>;
 };
 const Helper = document.getElementById("over-lays");
 const Modal = (props) => {
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop />, Helper)}
+      {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, Helper)}
       {ReactDOM.createPortal(
         <ModalOverLay>{props.children}</ModalOverLay>,
         Helper
